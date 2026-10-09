@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hugo Seureau — Strategy, GTM &amp; Product</title>
+<meta name="description" content="Strategic revenue leader and builder — GenHax, AppHax, Parity Database, and GTM strategy for Cyberette. Corporate strategy, go-to-market, sales, and product development.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0e14;
+    --ink-raised:#11151e;
+    --ink-card:#151a24;
+    --line:rgba(201,178,138,.16);
+    --line-strong:rgba(201,178,138,.32);
+    --cream:#eee8da;
+    --cream-dim:#a9a69c;
+    --cream-dimmer:#787568;
+    --gold:#d3a94c;
+    --gold-soft:#e6cb86;
+    --cyan:#7fb8c4;
+    --display:'Fraunces',Georgia,serif;
+    --body:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --measure:62ch;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--ink);color:var(--cream);font-family:var(--body);
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.3rem,4vw,2.5rem)}
+  .wrap--narrow{max-width:760px}
+  .eyebrow{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);display:inline-block;margin-bottom:.9rem;
+  }
+  h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.12;margin:0;color:var(--cream)}
+  .h1{font-size:clamp(2.4rem,6.4vw,4.6rem);letter-spacing:-.01em}
+  .h2{font-size:clamp(1.7rem,3.6vw,2.5rem);letter-spacing:-.005em}
+  .h3{font-size:1.25rem}
+  p{margin:0 0 1rem;color:var(--cream-dim);max-width:var(--measure)}
+  section{padding:clamp(3.5rem,8vw,6.5rem) 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:0}
+
+  /* nav */
+  .nav{
+    position:sticky;top:0;z-index:40;background:rgba(11,14,20,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav__inner{display:flex;align-items:center;justify-content:space-between;padding:1rem clamp(1.3rem,4vw,2.5rem);max-width:1080px;margin:0 auto}
+  .nav__name{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:.02em;text-decoration:none;color:var(--cream)}
+  .nav__links{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+  .nav__links a{text-decoration:none;color:var(--cream-dim);transition:color .2s}
+  .nav__links a:hover{color:var(--gold-soft)}
+  @media(max-width:680px){.nav__links{gap:1rem}.nav__links li:nth-child(3){display:none}}
+
+  /* hero */
+  .hero{padding-top:clamp(4rem,10vw,7rem);border-bottom:1px solid var(--line)}
+  .hero__kicker{font-family:var(--mono);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.1rem}
+  .hero p.lede{font-size:1.18rem;color:var(--cream-dim);max-width:58ch;margin-top:1.4rem}
+  .hero__cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
+  .btn{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+    padding:.85rem 1.5rem;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;
+    transition:background .2s,color .2s,border-color .2s;
+  }
+  .btn--solid{background:var(--gold);color:#1c1406;border:1px solid var(--gold)}
+  .btn--solid:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
+  .btn--ghost{background:rgba(211,169,76,.1);color:var(--gold-soft);border:1px solid var(--line-strong)}
+  .btn--ghost:hover{background:rgba(211,169,76,.18);border-color:var(--gold)}
+  .hero__stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.6rem;margin-top:3.2rem;padding-top:2.4rem;border-top:1px solid var(--line)}
+  .stat__num{font-family:var(--display);font-size:1.9rem;color:var(--gold-soft)}
+  .stat__label{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dimmer);margin-top:.3rem}
+
+  /* projects */
+  .projects{display:grid;gap:1.4rem;grid-template-columns:1fr;margin-top:2.6rem}
+  @media(min-width:860px){.projects{grid-template-columns:1fr 1fr}}
+  .pcard{
+    border:1px solid var(--line);border-radius:6px;padding:1.9rem;background:linear-gradient(170deg,var(--ink-card),var(--ink-raised));
+    display:flex;flex-direction:column;transition:border-color .25s,transform .25s;
+  }
+  .pcard:hover{border-color:var(--line-strong)}
+  .pcard--wide{grid-column:1/-1}
+  .pcard__tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+  .pcard h3{margin-bottom:.6rem}
+  .pcard p{font-size:.96rem;margin-bottom:1rem}
+  .pcard__surfaces{display:flex;flex-wrap:wrap;gap:.5rem;margin:.2rem 0 1.1rem}
+  .surface{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:var(--cyan);
+    border:1px solid rgba(127,184,196,.3);background:rgba(127,184,196,.08);
+    padding:.3rem .6rem;border-radius:3px;
+  }
+  .pcard__foot{margin-top:auto;padding-top:1rem;display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
+  .pcard__foot a{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--gold-soft);text-decoration:none;border-bottom:1px solid rgba(230,203,134,.35);padding-bottom:1px;
+  }
+  .pcard__foot a:hover{border-color:var(--gold-soft)}
+  .verified{
+    display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.64rem;
+    letter-spacing:.06em;color:#8fd19e;border:1px solid rgba(143,209,158,.35);background:rgba(143,209,158,.08);
+    padding:.3rem .6rem;border-radius:3px;
+  }
+
+  /* case study (Cyberette) */
+  .case{display:grid;gap:2.4rem;margin-top:2.2rem;grid-template-columns:1fr}
+  @media(min-width:900px){.case{grid-template-columns:1.1fr .9fr}}
+  .case__block h3{font-size:1rem;color:var(--gold-soft);margin-bottom:.5rem;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+  .case__block{margin-bottom:1.8rem}
+  .wedge{border:1px solid var(--line);border-radius:6px;padding:1.3rem 1.5rem;background:var(--ink-card);margin-bottom:.9rem}
+  .wedge b{color:var(--cream)}
+  .segs{display:grid;gap:.9rem}
+  .seg{border-left:2px solid var(--gold);padding:.2rem 0 .2rem 1.1rem}
+  .seg__name{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--cream);margin-bottom:.2rem}
+  .seg__why{font-size:.9rem;color:var(--cream-dim);margin:0}
+  .engine{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+  .engine span{
+    font-family:var(--mono);font-size:.68rem;color:var(--cream-dim);border:1px solid var(--line);
+    padding:.45rem .7rem;border-radius:3px;
+  }
+  .engine span:not(:last-child)::after{content:'→';margin-left:.6rem;color:var(--gold)}
+
+  /* skills */
+  .skillgrid{display:grid;gap:2rem;grid-template-columns:1fr;margin-top:2.4rem}
+  @media(min-width:760px){.skillgrid{grid-template-columns:repeat(3,1fr)}}
+  .skillcat h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:500}
+  .pill-row{display:flex;flex-wrap:wrap;gap:.5rem}
+  .pill{
+    font-size:.83rem;color:var(--cream-dim);border:1px solid var(--line);padding:.4rem .75rem;
+    border-radius:20px;background:var(--ink-card);
+  }
+  .pill--strong{color:var(--cream);border-color:var(--line-strong)}
+
+  /* experience */
+  .tl{margin-top:2.4rem;display:grid;gap:0}
+  .tl__row{display:grid;grid-template-columns:140px 1fr;gap:1.6rem;padding:1.5rem 0;border-top:1px solid var(--line)}
+  .tl__row:first-child{border-top:0}
+  @media(max-width:640px){.tl__row{grid-template-columns:1fr}}
+  .tl__when{font-family:var(--mono);font-size:.74rem;color:var(--cream-dimmer);letter-spacing:.04em;padding-top:.2rem}
+  .tl__role{font-family:var(--display);font-size:1.15rem;color:var(--cream);margin-bottom:.2rem}
+  .tl__org{font-family:var(--mono);font-size:.74rem;color:var(--gold-soft);letter-spacing:.04em;margin-bottom:.6rem}
+  .tl__row p{font-size:.93rem;margin:0}
+
+  /* contact / footer */
+  .contact{text-align:left}
+  .contact .h2{margin-bottom:1rem}
+  .contact__links{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.8rem}
+  .foot{padding:2.4rem 0 3.5rem;text-align:center}
+  .foot p{color:var(--cream-dimmer);font-size:.82rem;margin:0}
+  .foot a{color:var(--cream-dimmer);text-decoration:underline;text-underline-offset:2px}
+
+  ::selection{background:var(--gold);color:#1c1406}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a class="nav__name" href="#top">Hugo Seureau</a>
+    <ul class="nav__links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#cyberette">Strategy work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="hero__kicker">Strategy &middot; Go-to-Market &middot; Product</p>
+    <h1 class="h1">I turn market insight into<br>shipped products and closed revenue.</h1>
+    <p class="lede">Ten-plus years moving between corporate strategy and hands-on building — go-to-market design, sales process, and positioning for cybersecurity and SaaS platforms, and founder of GenHax, where I design and build the product myself.</p>
+    <div class="hero__cta">
+      <a class="btn btn--solid" href="https://genhax.com/u/bf425772-548e-4d18-845a-b4d21e7ca31e" target="_blank" rel="noopener">View verified skills on GenHax</a>
+      <a class="btn btn--ghost" href="#projects">See the projects</a>
+      <a class="btn btn--ghost" href="mailto:hugues.seureau@gmail.com">Email me</a>
+    </div>
+    <div class="hero__stats">
+      <div><div class="stat__num">$1B+</div><div class="stat__label">Revenue impact informed</div></div>
+      <div><div class="stat__num">50+</div><div class="stat__label">Fortune 500 partnerships</div></div>
+      <div><div class="stat__num">0&rarr;12</div><div class="stat__label">Team built at GenHax</div></div>
+      <div><div class="stat__num">4</div><div class="stat__label">Languages fluent</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="projects">
+  <div class="wrap">
+    <span class="eyebrow">What I've built</span>
+    <h2 class="h2">Products, not just plans</h2>
+    <p style="margin-top:.9rem">I don't hand off strategy and walk away — I build the thing. GenHax is designed, coded, and operated by me end to end, across its web platform, desktop automation agent, and Chrome extension.</p>
+
+    <div class="projects">
+      <div class="pcard pcard--wide">
+        <span class="pcard__tag">Founder &middot; Product &middot; Engineering</span>
+        <h3 class="h3">GenHax</h3>
+        <p>An AI-powered co-creation and experiential learning platform: teams, students, and hackathon veterans solve real-world challenges through AI-guided workflows, with work evaluated into verified skill badges — not self-reported claims. Deployed across universities and organizations, including NSF-backed projects, to upskill workforces and ship real software. GenHax also runs <strong>AppHax</strong>, a dedicated app-development arm that builds mobile and web apps for nonprofits, startups, and enterprises — from a one-week prototype to fully built, maintained applications.</p>
+        <div class="pcard__surfaces">
+          <span class="surface">Web platform (Next.js)</span>
+          <span class="surface">Desktop automation agent</span>
+          <span class="surface">Chrome extension</span>
+          <span class="surface">Postgres / Supabase</span>
+        </div>
+        <div class="pcard__foot">
+          <a href="https://genhax.com" target="_blank" rel="noopener">genhax.com &rarr;</a>
+          <a href="https://genhax.com/u/bf425772-548e-4d18-845a-b4d21e7ca31e" target="_blank" rel="noopener">My GenHax profile &rarr;</a>
+          <span class="verified">&#10003; Verified on GenHax: Challenge Creator Tool, Lead Gen Tool</span>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <span class="pcard__tag">AppHax client build</span>
+        <h3 class="h3">Parity Database</h3>
+        <p>A production app built and delivered through AppHax, GenHax's app-development service — taken from prototype to a live, maintained application.</p>
+        <div class="pcard__foot">
+          <a href="https://theparitydatabase.org" target="_blank" rel="noopener">theparitydatabase.org &rarr;</a>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <span class="pcard__tag">App development service</span>
+        <h3 class="h3">AppHax</h3>
+        <p>GenHax's build service for founders and organizations: a one-week prototype, a fully built no-code app over two months, or a competitive build challenge with a vetted developer network and a prize pool, plus optional maintenance training.</p>
+        <div class="pcard__foot">
+          <a href="https://genhax.com/apphax-build-apps" target="_blank" rel="noopener">Explore AppHax &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cyberette">
+  <div class="wrap">
+    <span class="eyebrow">Strategy case study</span>
+    <h2 class="h2">Cyberette — from unsystematized pipeline to a repeatable engine</h2>
+    <p style="margin-top:.9rem;max-width:68ch">Senior Strategy Consultant engagement owning North American go-to-market for a deepfake and synthetic-media forensics platform. The product had one live customer and no repeatable sales process — pipeline lived in scattered notes, qualification broke down on the first hard question, and the CRM was out of date. I rebuilt the positioning, picked the markets, and designed the process that would make revenue repeatable.</p>
+
+    <div class="case">
+      <div>
+        <div class="case__block">
+          <h3>Positioning</h3>
+          <div class="wedge">
+            <p style="margin:0"><b>Detect → Analyse → Prosecute.</b> Competitors return a probability score — useless once money moves or a case reaches court. I repositioned the product around court-admissible forensic evidence with a documented chain of custody: the same output serves a law firm's exhibit, a talent agency's takedown, and a police case file. One wedge, three markets.</p>
+          </div>
+        </div>
+        <div class="case__block">
+          <h3>Market selection &amp; rationale</h3>
+          <div class="segs">
+            <div class="seg"><div class="seg__name">Reputation &amp; brand-protection agencies</div><p class="seg__why">Urgent brand risk, discretionary budget, one agency carries many clients — fast and repeatable.</p></div>
+            <div class="seg"><div class="seg__name">Legal (media law, privacy, national security)</div><p class="seg__why">Clear court use case with per-matter budget — a longer chase, but the demand is real.</p></div>
+            <div class="seg"><div class="seg__name">IAM &amp; identity channel partners</div><p class="seg__why">Embeds into KYC flows the partner already owns — lowest friction, fastest path to volume.</p></div>
+          </div>
+          <p style="margin-top:.9rem;font-size:.9rem">Deliberately sequenced: three low-friction plays fund the ramp and generate references, while slower law-enforcement, government, and banking cycles mature underneath. First revenue was never gated on the slowest buyer.</p>
+        </div>
+      </div>
+      <div>
+        <div class="case__block">
+          <h3>Qualification, redesigned</h3>
+          <p>"How many fraud cases do you have?" got no answer — the work was manual and uncounted. I replaced it with a process-cost qualification: hours spent per case today, cases dropped for lack of proof, exposure when evidence fails. Every deal mapped to a named champion, economic buyer, and decision maker before it could reach proposal.</p>
+        </div>
+        <div class="case__block">
+          <h3>The sales engine</h3>
+          <div class="engine">
+            <span>Source</span><span>Qualify</span><span>Discovery</span><span>Demo</span><span>Proposal</span><span>Close</span><span>Expand</span>
+          </div>
+          <p style="margin-top:1rem;font-size:.9rem">Each stage carries an exit test — no deal advances without a named role identified and the next step booked. Weekly pipeline hygiene (stage, next step, aged deals flagged) is enforced by CRM automation, not memory.</p>
+        </div>
+        <div class="case__block">
+          <h3>Result</h3>
+          <p>5 enterprise accounts closed at six-figure deal values, 40+ strategic partnerships established, and a regional product-market fit reached by turning an ad hoc pipeline into a process every rep could run the same way.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <span class="eyebrow">What I bring</span>
+    <h2 class="h2">Strategy, revenue, and the technical fluency to build it myself</h2>
+    <p style="margin-top:.9rem">The two badges below are verified — scored from actual work inside GenHax, not self-reported. Everything else reflects direct, hands-on experience across the roles on my résumé.</p>
+
+    <div class="skillgrid">
+      <div class="skillcat">
+        <h3>Strategic Positioning &amp; GTM</h3>
+        <div class="pill-row">
+          <span class="pill pill--strong">Corporate Strategy</span>
+          <span class="pill pill--strong">Strategic Planning</span>
+          <span class="pill">Go-to-Market Strategy</span>
+          <span class="pill">Competitive Analysis</span>
+          <span class="pill">Market Research</span>
+          <span class="pill">Pricing Strategy</span>
+          <span class="pill">M&amp;A / Due Diligence</span>
+          <span class="pill">TAM/SAM/SOM Modeling</span>
+        </div>
+      </div>
+      <div class="skillcat">
+        <h3>Sales &amp; Business Development</h3>
+        <div class="pill-row">
+          <span class="pill pill--strong">Business Development</span>
+          <span class="pill pill--strong">Partnership Management</span>
+          <span class="pill">Enterprise Sales</span>
+          <span class="pill">Sales Strategy</span>
+          <span class="pill">Revenue Management</span>
+          <span class="pill">Account Management</span>
+          <span class="pill">Contract Negotiation</span>
+          <span class="pill">Salesforce / HubSpot</span>
+        </div>
+      </div>
+      <div class="skillcat">
+        <h3>Product &amp; Technical</h3>
+        <div class="pill-row">
+          <span class="pill" style="border-color:rgba(143,209,158,.45);color:#8fd19e">&#10003; GenHax Lead Gen Tool</span>
+          <span class="pill" style="border-color:rgba(143,209,158,.45);color:#8fd19e">&#10003; GenHax Challenge Creator Tool</span>
+          <span class="pill">Product Management</span>
+          <span class="pill">Full-Stack Development</span>
+          <span class="pill">Next.js / React / TypeScript</span>
+          <span class="pill">Python / SQL</span>
+          <span class="pill">Financial Modeling</span>
+          <span class="pill">Prompt Engineering</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap wrap--narrow">
+    <span class="eyebrow">Track record</span>
+    <h2 class="h2">Experience</h2>
+    <div class="tl">
+      <div class="tl__row">
+        <div class="tl__when">2020 — Present</div>
+        <div>
+          <div class="tl__role">Business Development &amp; Operations Lead</div>
+          <div class="tl__org">GenHax, New York</div>
+          <p>Took the platform from startup to established market presence. Secured 50+ strategic partnerships including Accenture, Capital One, Nasdaq, and Wells Fargo; sustained 15% month-over-month growth; built the team from 0 to 12; led a financing round by converting strategic customers into investors.</p>
+        </div>
+      </div>
+      <div class="tl__row">
+        <div class="tl__when">2023</div>
+        <div>
+          <div class="tl__role">Senior Strategy Consultant, North America</div>
+          <div class="tl__org">Certilane / Cyberette</div>
+          <p>Owned North American market entry for a cybersecurity SaaS platform — positioning, segmentation, and the sales process described above. Closed 5 six-figure enterprise accounts and built 40+ partnerships from a standing start.</p>
+        </div>
+      </div>
+      <div class="tl__row">
+        <div class="tl__when">2017 — 2020</div>
+        <div>
+          <div class="tl__role">Market &amp; Competitive Intelligence Manager</div>
+          <div class="tl__org">PTC, New York</div>
+          <p>Strategic research and competitive intelligence supporting executive decisions as PTC grew from $1B to $2B in revenue — new-market opportunity identification across 20 global markets, a 45% faster market-entry cycle, and an 80% lift in sales effectiveness through intelligence frameworks.</p>
+        </div>
+      </div>
+      <div class="tl__row">
+        <div class="tl__when">2012 — 2017</div>
+        <div>
+          <div class="tl__role">Corporate Strategy Analyst</div>
+          <div class="tl__org">PTC, New York</div>
+          <p>Financial modeling and market analysis across healthcare, aerospace, and manufacturing — econometric models for deal economics, and the segmentation frameworks the later strategy work was built on.</p>
+        </div>
+      </div>
+      <div class="tl__row">
+        <div class="tl__when">Earlier</div>
+        <div>
+          <div class="tl__role">Group Sales Lead, Northern EU</div>
+          <div class="tl__org">AB7, Paris &amp; London</div>
+          <p>Enterprise sales and account planning across Northern European markets.</p>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:2.2rem;font-size:.9rem">Master's in Business, Corporate Strategy — Sciences Po, France. Winner, Export Award (French Foreign Business Advisors). Fluent in English, French, Spanish, and German.</p>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:0">
+  <div class="wrap wrap--narrow contact">
+    <span class="eyebrow">Get in touch</span>
+    <h2 class="h2">Let's build something, or fix your go-to-market.</h2>
+    <p>Open to strategic advisory, GTM/sales-process design, and product-build work through AppHax.</p>
+    <div class="contact__links">
+      <a class="btn btn--solid" href="mailto:hugues.seureau@gmail.com">hugues.seureau@gmail.com</a>
+      <a class="btn btn--ghost" href="https://linkedin.com/in/hugoseureau" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn--ghost" href="https://github.com/HugoGenhax" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn--ghost" href="https://genhax.com/u/bf425772-548e-4d18-845a-b4d21e7ca31e" target="_blank" rel="noopener">GenHax profile</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <p>Hugo Seureau &middot; New York City &middot; <a href="https://genhax.com">genhax.com</a></p>
+</footer>
+
+</body>
+</html>
