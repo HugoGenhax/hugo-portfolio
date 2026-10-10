@@ -184,6 +184,7 @@
   .rlm-calc__field {
     display: flex;
     flex-direction: column;
+    min-width: 0;
   }
   .rlm-calc__field--full {
     grid-column: 1 / -1;
@@ -216,6 +217,9 @@
     -webkit-appearance: none;
     transition: border-color 0.2s, box-shadow 0.2s;
     cursor: pointer;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
   .rlm-calc__select {
     background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%232B4C7E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
