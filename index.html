@@ -76,6 +76,14 @@
   .btn--ghost:hover{background:rgba(211,169,76,.18);border-color:var(--gold)}
   .accent{font-style:italic;color:var(--gold-soft)}
   .hero__stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.6rem;margin-top:3.2rem;padding-top:2.4rem;border-top:1px solid var(--line)}
+  .hero__grid{display:flex;gap:clamp(2rem,5vw,3.5rem);align-items:center}
+  .hero__copy{flex:1 1 560px;min-width:0}
+  .hero__art{flex:0 0 clamp(200px,24vw,300px)}
+  .hero__art img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;border:1px solid var(--line-strong)}
+  @media(max-width:820px){
+    .hero__grid{flex-direction:column-reverse;gap:2rem}
+    .hero__art{flex:0 0 auto;max-width:220px;width:100%}
+  }
   .stat__num{font-family:var(--display);font-size:1.9rem;color:var(--gold-soft)}
   .stat__label{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dimmer);margin-top:.3rem}
 
@@ -234,13 +242,20 @@
 
 <header class="hero" id="top">
   <div class="wrap">
-    <p class="hero__kicker">Strategy &middot; Go-to-Market &middot; Product</p>
-    <h1 class="h1">I turn market insight into shipped products<br><span class="accent">and closed revenue.</span></h1>
-    <p class="lede">Ten-plus years moving between corporate strategy and hands-on building — go-to-market design, sales process, and positioning for cybersecurity and SaaS platforms, and founder of GenHax, where I design and build the product myself while leading teams of dozens across several projects running at once.</p>
-    <div class="hero__cta">
-      <a class="btn btn--solid" href="https://app.genhax.com/u/bf425772-548e-4d18-845a-b4d21e7ca31e" target="_blank" rel="noopener">View verified skills on GenHax</a>
-      <a class="btn btn--ghost" href="#projects">See the projects</a>
-      <a class="btn btn--ghost" href="mailto:hugues.seureau@gmail.com">Email me</a>
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <p class="hero__kicker">Strategy &middot; Go-to-Market &middot; Product</p>
+        <h1 class="h1">I turn market insight into shipped products<br><span class="accent">and closed revenue.</span></h1>
+        <p class="lede">Ten-plus years moving between corporate strategy and hands-on building — go-to-market design, sales process, and positioning for cybersecurity and SaaS platforms, and founder of GenHax, where I design and build the product myself while leading teams of dozens across several projects running at once.</p>
+        <div class="hero__cta">
+          <a class="btn btn--solid" href="https://app.genhax.com/u/bf425772-548e-4d18-845a-b4d21e7ca31e" target="_blank" rel="noopener">View verified skills on GenHax</a>
+          <a class="btn btn--ghost" href="#projects">See the projects</a>
+          <a class="btn btn--ghost" href="mailto:hugues.seureau@gmail.com">Email me</a>
+        </div>
+      </div>
+      <div class="hero__art">
+        <img src="images/hugo-portrait.jpg" alt="Hugo Seureau">
+      </div>
     </div>
     <div class="hero__stats">
       <div><div class="stat__num">$1B+</div><div class="stat__label">Revenue impact informed</div></div>
