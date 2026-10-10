@@ -67,13 +67,14 @@
   .hero__cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
   .btn{
     font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
-    padding:.85rem 1.5rem;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;
+    padding:.85rem 1.6rem;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;
     transition:background .2s,color .2s,border-color .2s;
   }
   .btn--solid{background:var(--gold);color:#1c1406;border:1px solid var(--gold)}
   .btn--solid:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
   .btn--ghost{background:rgba(211,169,76,.1);color:var(--gold-soft);border:1px solid var(--line-strong)}
   .btn--ghost:hover{background:rgba(211,169,76,.18);border-color:var(--gold)}
+  .accent{font-style:italic;color:var(--gold-soft)}
   .hero__stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.6rem;margin-top:3.2rem;padding-top:2.4rem;border-top:1px solid var(--line)}
   .stat__num{font-family:var(--display);font-size:1.9rem;color:var(--gold-soft)}
   .stat__label{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dimmer);margin-top:.3rem}
@@ -107,6 +108,35 @@
     letter-spacing:.06em;color:#8fd19e;border:1px solid rgba(143,209,158,.35);background:rgba(143,209,158,.08);
     padding:.3rem .6rem;border-radius:3px;
   }
+
+  /* picture placeholders — swap in a real screenshot by replacing the
+     .shot--* background with background-image:url(...);background-size:cover;
+     background-position:center and deleting .shot__placeholder-tag. the
+     caption box is a layer on top of the image, not a caption below it. */
+  .shot{position:relative;border-radius:6px;overflow:hidden;margin-bottom:1.4rem;aspect-ratio:16/10;isolation:isolate}
+  .shot--wide{aspect-ratio:21/8}
+  .shot::before{
+    content:'';position:absolute;inset:0;mix-blend-mode:overlay;pointer-events:none;
+    background-image:repeating-linear-gradient(115deg,rgba(255,255,255,.06) 0 1px,transparent 1px 4px),
+      radial-gradient(circle at 25% 15%,rgba(255,255,255,.1),transparent 55%);
+  }
+  .shot--genhax{background:linear-gradient(135deg,#123244,#16233f 55%,var(--ink))}
+  .shot--parity{background:linear-gradient(135deg,#2c2140,#1a1430 55%,var(--ink))}
+  .shot--apphax{background:linear-gradient(135deg,#3d2c0d,#251c0c 55%,var(--ink))}
+  .shot__mark{
+    position:absolute;right:-.4rem;bottom:-2.1rem;font-family:var(--display);font-style:italic;font-weight:600;
+    font-size:11rem;line-height:1;color:rgba(255,255,255,.07);pointer-events:none;user-select:none;
+  }
+  .shot__placeholder-tag{
+    position:absolute;top:.85rem;right:.95rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;
+    text-transform:uppercase;color:rgba(238,232,218,.42);
+  }
+  .shot__caption{
+    position:absolute;left:1.1rem;bottom:1.1rem;max-width:240px;padding:.8rem 1rem;border-radius:2px;
+    border:1px solid rgba(238,232,218,.5);background:rgba(11,14,20,.3);backdrop-filter:blur(3px);
+  }
+  .shot__caption .ln{font-size:.78rem;color:var(--cream-dim);margin-bottom:.3rem;line-height:1.35}
+  .shot__caption .ln:last-child{margin-bottom:0;color:var(--cream);font-weight:700}
 
   /* case study (Cyberette) */
   .case{display:grid;gap:2.4rem;margin-top:2.2rem;grid-template-columns:1fr}
@@ -176,7 +206,7 @@
 <header class="hero" id="top">
   <div class="wrap">
     <p class="hero__kicker">Strategy &middot; Go-to-Market &middot; Product</p>
-    <h1 class="h1">I turn market insight into<br>shipped products and closed revenue.</h1>
+    <h1 class="h1">I turn market insight into shipped products<br><span class="accent">and closed revenue.</span></h1>
     <p class="lede">Ten-plus years moving between corporate strategy and hands-on building — go-to-market design, sales process, and positioning for cybersecurity and SaaS platforms, and founder of GenHax, where I design and build the product myself.</p>
     <div class="hero__cta">
       <a class="btn btn--solid" href="https://genhax.com/u/bf425772-548e-4d18-845a-b4d21e7ca31e" target="_blank" rel="noopener">View verified skills on GenHax</a>
@@ -200,6 +230,15 @@
 
     <div class="projects">
       <div class="pcard pcard--wide">
+        <div class="shot shot--wide shot--genhax">
+          <span class="shot__mark">G</span>
+          <span class="shot__placeholder-tag">Add product screenshot</span>
+          <div class="shot__caption">
+            <div class="ln">Designed, coded &amp; operated solo</div>
+            <div class="ln">Deployed across universities &amp; NSF-backed teams</div>
+            <div class="ln">Live product, not a pitch deck</div>
+          </div>
+        </div>
         <span class="pcard__tag">Founder &middot; Product &middot; Engineering</span>
         <h3 class="h3">GenHax</h3>
         <p>An AI-powered co-creation and experiential learning platform: teams, students, and hackathon veterans solve real-world challenges through AI-guided workflows, with work evaluated into verified skill badges — not self-reported claims. Deployed across universities and organizations, including NSF-backed projects, to upskill workforces and ship real software. GenHax also runs <strong>AppHax</strong>, a dedicated app-development arm that builds mobile and web apps for nonprofits, startups, and enterprises — from a one-week prototype to fully built, maintained applications.</p>
@@ -217,6 +256,15 @@
       </div>
 
       <div class="pcard">
+        <div class="shot shot--parity">
+          <span class="shot__mark">P</span>
+          <span class="shot__placeholder-tag">Add product screenshot</span>
+          <div class="shot__caption">
+            <div class="ln">Built through AppHax</div>
+            <div class="ln">Client: Parity Productions</div>
+            <div class="ln">Shipped to production</div>
+          </div>
+        </div>
         <span class="pcard__tag">AppHax client build</span>
         <h3 class="h3">Parity Database</h3>
         <p>A production app built and delivered through AppHax, GenHax's app-development service — taken from prototype to a live, maintained application.</p>
@@ -226,9 +274,18 @@
       </div>
 
       <div class="pcard">
+        <div class="shot shot--apphax">
+          <span class="shot__mark">A</span>
+          <span class="shot__placeholder-tag">Add product screenshot</span>
+          <div class="shot__caption">
+            <div class="ln">Basic: 1-week prototype or 2-month no-code build</div>
+            <div class="ln">Advanced: competitive bid, vetted freelancers</div>
+            <div class="ln">$1,000&ndash;$100,000 prize pools</div>
+          </div>
+        </div>
         <span class="pcard__tag">App development service</span>
         <h3 class="h3">AppHax</h3>
-        <p>GenHax's build service for founders and organizations: a one-week prototype, a fully built no-code app over two months, or a competitive build challenge with a vetted developer network and a prize pool, plus optional maintenance training.</p>
+        <p>GenHax's build service for founders and organizations. <strong>Basic:</strong> a one-week prototype (&sim;$1,000), or a fully built no-code app over two months ($2,000/mo). <strong>Advanced:</strong> a competitive build challenge where vetted freelancers bid for the work, with prize pools from $1,000 to $100,000 for premium design and development. Optional maintenance training either way.</p>
         <div class="pcard__foot">
           <a href="https://genhax.com/apphax-build-apps" target="_blank" rel="noopener">Explore AppHax &rarr;</a>
         </div>
@@ -240,7 +297,7 @@
 <section id="cyberette">
   <div class="wrap">
     <span class="eyebrow">Strategy case study</span>
-    <h2 class="h2">Cyberette — from unsystematized pipeline to a repeatable engine</h2>
+    <h2 class="h2">Cyberette — from unsystematized pipeline to <span class="accent">a repeatable engine</span></h2>
     <p style="margin-top:.9rem;max-width:68ch">Senior Strategy Consultant engagement owning North American go-to-market for a deepfake and synthetic-media forensics platform. The product had one live customer and no repeatable sales process — pipeline lived in scattered notes, qualification broke down on the first hard question, and the CRM was out of date. I rebuilt the positioning, picked the markets, and designed the process that would make revenue repeatable.</p>
 
     <div class="case">
