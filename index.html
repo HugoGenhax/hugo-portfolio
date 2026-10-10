@@ -128,8 +128,8 @@
     font-size:11rem;line-height:1;color:rgba(255,255,255,.07);pointer-events:none;user-select:none;
   }
   .shot__placeholder-tag{
-    position:absolute;top:.85rem;right:.95rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;
-    text-transform:uppercase;color:rgba(238,232,218,.42);
+    position:absolute;top:.85rem;right:.95rem;left:.95rem;text-align:right;font-family:var(--mono);font-size:.6rem;
+    letter-spacing:.06em;text-transform:uppercase;color:rgba(238,232,218,.42);
   }
   .shot__caption{
     position:absolute;left:1.1rem;bottom:1.1rem;max-width:240px;padding:.8rem 1rem;border-radius:2px;
@@ -137,6 +137,25 @@
   }
   .shot__caption .ln{font-size:.78rem;color:var(--cream-dim);margin-bottom:.3rem;line-height:1.35}
   .shot__caption .ln:last-child{margin-bottom:0;color:var(--cream);font-weight:700}
+
+  /* live site embeds — a real, live iframe of the actual site, framed like
+     a browser window so it reads as "this is really the site", not a photo. */
+  .browser{border-radius:8px;overflow:hidden;border:1px solid var(--line);margin-bottom:1.4rem;background:var(--ink-raised)}
+  .browser__bar{display:flex;align-items:center;gap:.7rem;padding:.6rem .8rem;background:var(--ink-card);border-bottom:1px solid var(--line)}
+  .browser__dots{display:flex;gap:.35rem;flex-shrink:0}
+  .browser__dots span{width:.55rem;height:.55rem;border-radius:50%;background:var(--line-strong)}
+  .browser__url{
+    flex:1;font-family:var(--mono);font-size:.68rem;color:var(--cream-dimmer);
+    background:var(--ink);border:1px solid var(--line);border-radius:999px;padding:.3rem .9rem;
+    text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .browser__live{
+    flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.62rem;
+    letter-spacing:.06em;text-transform:uppercase;color:#8fd19e;
+  }
+  .browser__live::before{content:'';width:.4rem;height:.4rem;border-radius:50%;background:#8fd19e;box-shadow:0 0 0 3px rgba(143,209,158,.18)}
+  .browser__frame{width:100%;aspect-ratio:16/10;border:0;display:block;background:var(--cream)}
+  .browser--wide .browser__frame{aspect-ratio:21/9}
 
   /* case study (Cyberette) */
   .case{display:grid;gap:2.4rem;margin-top:2.2rem;grid-template-columns:1fr}
@@ -231,14 +250,13 @@
 
     <div class="projects">
       <div class="pcard pcard--wide">
-        <div class="shot shot--wide shot--genhax">
-          <span class="shot__mark">G</span>
-          <span class="shot__placeholder-tag">Add product screenshot</span>
-          <div class="shot__caption">
-            <div class="ln">Designed, coded &amp; operated solo</div>
-            <div class="ln">Deployed across universities &amp; NSF-backed teams</div>
-            <div class="ln">Live product, not a pitch deck</div>
+        <div class="browser browser--wide">
+          <div class="browser__bar">
+            <div class="browser__dots"><span></span><span></span><span></span></div>
+            <div class="browser__url">app.genhax.com</div>
+            <div class="browser__live">Live</div>
           </div>
+          <iframe class="browser__frame" src="https://app.genhax.com" loading="lazy" title="GenHax, live"></iframe>
         </div>
         <span class="pcard__tag">Founder &middot; Product &middot; Engineering</span>
         <h3 class="h3">GenHax</h3>
@@ -259,7 +277,7 @@
       <div class="pcard">
         <div class="shot shot--parity">
           <span class="shot__mark">P</span>
-          <span class="shot__placeholder-tag">Add product screenshot</span>
+          <span class="shot__placeholder-tag">Site blocks embedding &mdash; screenshot pending</span>
           <div class="shot__caption">
             <div class="ln">Built through AppHax</div>
             <div class="ln">Client: Parity Productions</div>
@@ -277,7 +295,7 @@
       <div class="pcard">
         <div class="shot shot--apphax">
           <span class="shot__mark">A</span>
-          <span class="shot__placeholder-tag">Add product screenshot</span>
+          <span class="shot__placeholder-tag">Site blocks embedding &mdash; screenshot pending</span>
           <div class="shot__caption">
             <div class="ln">Basic: 1-week prototype or 2-month no-code build</div>
             <div class="ln">Advanced: competitive bid, vetted freelancers</div>
@@ -289,6 +307,57 @@
         <p>GenHax's build service for founders and organizations. <strong>Basic:</strong> a one-week prototype (&sim;$1,000), or a fully built no-code app over two months ($2,000/mo). <strong>Advanced:</strong> a competitive build challenge where vetted freelancers bid for the work, with prize pools from $1,000 to $100,000 for premium design and development. Optional maintenance training either way.</p>
         <div class="pcard__foot">
           <a href="https://genhax.com/apphax-build-apps" target="_blank" rel="noopener">Explore AppHax &rarr;</a>
+        </div>
+      </div>
+
+      <div class="pcard pcard--wide">
+        <div class="browser">
+          <div class="browser__bar">
+            <div class="browser__dots"><span></span><span></span><span></span></div>
+            <div class="browser__url">Divorce Cost &amp; Impact Calculator</div>
+            <div class="browser__live">Live</div>
+          </div>
+          <iframe class="browser__frame" src="embeds/rodriguez-divorce-calculator.html" loading="lazy" title="Divorce Cost &amp; Impact Calculator, live"></iframe>
+        </div>
+        <span class="pcard__tag">GTM &amp; Content Consulting</span>
+        <h3 class="h3">Rodriguez Law &amp; Mediation</h3>
+        <p>Positioning, content, and local-SEO engagement for a Manhattan divorce mediation practice: Google Business Profile strategy, blog and neighborhood-expansion content, a review-generation playbook, and a full Spanish-language track for the firm's bilingual client base. The interactive piece above — a Divorce Cost &amp; Impact Calculator comparing mediation to litigation — is a lead-generation tool I designed and built myself, live on the firm's site.</p>
+        <div class="pcard__foot">
+          <a href="https://www.rodriguezlawandmediation.com" target="_blank" rel="noopener">rodriguezlawandmediation.com &rarr;</a>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <div class="browser">
+          <div class="browser__bar">
+            <div class="browser__dots"><span></span><span></span><span></span></div>
+            <div class="browser__url">hugogenhax.github.io/irene-sudac-site</div>
+            <div class="browser__live">Live</div>
+          </div>
+          <iframe class="browser__frame" src="https://hugogenhax.github.io/irene-sudac-site/" loading="lazy" title="Irene Sudac / Enericadus, live"></iframe>
+        </div>
+        <span class="pcard__tag">Positioning &amp; Site Build</span>
+        <h3 class="h3">Irene Sudac &middot; Enericadus</h3>
+        <p>Positioning and website for a manufacturing &amp; operational-finance consulting practice serving global manufacturers. Navigation is organized by the problems buyers actually search for — margin, working capital, ERP and order-to-cash, captive finance, footprint — instead of generic service categories, built around how a deal really gets forwarded internally from a plant controller to a VP of FP&amp;A.</p>
+        <div class="pcard__foot">
+          <a href="https://hugogenhax.github.io/irene-sudac-site/" target="_blank" rel="noopener">View site &rarr;</a>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <div class="browser">
+          <div class="browser__bar">
+            <div class="browser__dots"><span></span><span></span><span></span></div>
+            <div class="browser__url">hugogenhax.github.io/wedding-site-KH</div>
+            <div class="browser__live">Live</div>
+          </div>
+          <iframe class="browser__frame" src="https://hugogenhax.github.io/wedding-site-KH/" loading="lazy" title="Katie &amp; Hugo wedding site, live"></iframe>
+        </div>
+        <span class="pcard__tag">Personal build</span>
+        <h3 class="h3">Katie &amp; Hugo</h3>
+        <p>A wedding site built end to end for our own event: a custom RSVP flow backed by Google Sheets, a dynamic photo gallery, and a guest-details page encrypted client-side (AES-GCM, password-derived key) so the content behind it stays private to invited guests — what's live above is the real gate, not a mockup.</p>
+        <div class="pcard__foot">
+          <a href="https://hugogenhax.github.io/wedding-site-KH/" target="_blank" rel="noopener">View site &rarr;</a>
         </div>
       </div>
     </div>
