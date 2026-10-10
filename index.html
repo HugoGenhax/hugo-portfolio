@@ -121,8 +121,10 @@
       radial-gradient(circle at 25% 15%,rgba(255,255,255,.1),transparent 55%);
   }
   .shot--genhax{background:linear-gradient(135deg,#123244,#16233f 55%,var(--ink))}
-  .shot--parity{background:linear-gradient(135deg,#2c2140,#1a1430 55%,var(--ink))}
-  .shot--apphax{background:linear-gradient(135deg,#3d2c0d,#251c0c 55%,var(--ink))}
+  .shot--parity{background:url(images/parity.jpg) center/cover}
+  .shot--apphax{background:url(images/apphax.jpg) center/cover}
+  .shot--photo::before{display:none}
+  .shot--photo .shot__mark{display:none}
   .shot__mark{
     position:absolute;right:-.4rem;bottom:-2.1rem;font-family:var(--display);font-style:italic;font-weight:600;
     font-size:11rem;line-height:1;color:rgba(255,255,255,.07);pointer-events:none;user-select:none;
@@ -156,6 +158,12 @@
   .browser__live::before{content:'';width:.4rem;height:.4rem;border-radius:50%;background:#8fd19e;box-shadow:0 0 0 3px rgba(143,209,158,.18)}
   .browser__frame{width:100%;aspect-ratio:16/10;border:0;display:block;background:var(--cream)}
   .browser--wide .browser__frame{aspect-ratio:21/9}
+  .inside{margin:1.6rem 0 1.4rem}
+  .inside__label{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dimmer);margin-bottom:.8rem}
+  .inside__grid{display:grid;gap:.9rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  .inside__shot{border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+  .inside__shot img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+  .inside__cap{font-family:var(--mono);font-size:.68rem;color:var(--cream-dimmer);padding:.6rem .2rem 0}
 
   /* case study (Cyberette) */
   .case{display:grid;gap:2.4rem;margin-top:2.2rem;grid-template-columns:1fr}
@@ -258,6 +266,23 @@
           </div>
           <iframe class="browser__frame" src="https://app.genhax.com" loading="lazy" title="GenHax, live"></iframe>
         </div>
+        <div class="inside">
+          <div class="inside__label">Inside the app</div>
+          <div class="inside__grid">
+            <div>
+              <div class="inside__shot"><img src="images/genhax-challenge-creation.jpg" alt="GenHax challenge creation wizard"></div>
+              <div class="inside__cap">Challenge creation wizard</div>
+            </div>
+            <div>
+              <div class="inside__shot"><img src="images/genhax-team-chat.jpg" alt="GenHax team chat"></div>
+              <div class="inside__cap">Team chat &amp; co-creation</div>
+            </div>
+            <div>
+              <div class="inside__shot"><img src="images/genhax-leadgen.jpg" alt="GenHax lead gen dashboard"></div>
+              <div class="inside__cap">Lead gen dashboard</div>
+            </div>
+          </div>
+        </div>
         <span class="pcard__tag">Founder &middot; Product &middot; Engineering</span>
         <h3 class="h3">GenHax</h3>
         <p>An AI-powered co-creation and experiential learning platform: teams, students, and hackathon veterans solve real-world challenges through AI-guided workflows, with work evaluated into verified skill badges — not self-reported claims. Deployed across universities and organizations, including NSF-backed projects, to upskill workforces and ship real software. GenHax also runs <strong>AppHax</strong>, a dedicated app-development arm that builds mobile and web apps for nonprofits, startups, and enterprises — from a one-week prototype to fully built, maintained applications.</p>
@@ -275,9 +300,7 @@
       </div>
 
       <div class="pcard">
-        <div class="shot shot--parity">
-          <span class="shot__mark">P</span>
-          <span class="shot__placeholder-tag">Site blocks embedding &mdash; screenshot pending</span>
+        <div class="shot shot--parity shot--photo">
           <div class="shot__caption">
             <div class="ln">Built through AppHax</div>
             <div class="ln">Client: Parity Productions</div>
@@ -293,9 +316,7 @@
       </div>
 
       <div class="pcard">
-        <div class="shot shot--apphax">
-          <span class="shot__mark">A</span>
-          <span class="shot__placeholder-tag">Site blocks embedding &mdash; screenshot pending</span>
+        <div class="shot shot--apphax shot--photo">
           <div class="shot__caption">
             <div class="ln">Basic: 1-week prototype or 2-month no-code build</div>
             <div class="ln">Advanced: competitive bid, vetted freelancers</div>
